@@ -1,0 +1,16 @@
+.env
+*.local
+./venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+/mongo_migrations/
+mongo_key.bin
+.vscode/
+.idea/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
