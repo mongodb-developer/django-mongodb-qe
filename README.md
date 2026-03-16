@@ -1,6 +1,6 @@
 # Django MongoDB Backend - Project Template
 
-This is a Django project starter template for the Django MongoDB Backend.
+This is a Django project highlighting the use of Queryable Encryption on the Django MongoDB Backend.
 In order to use it with your version of Django: 
 
 - Find your Django version. To do so from the command line, make sure you
