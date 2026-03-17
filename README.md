@@ -1,28 +1,51 @@
-# Django MongoDB Backend - Project Template
+# QuerySafe
 
-This is a Django project highlighting the use of Queryable Encryption on the Django MongoDB Backend.
-In order to use it with your version of Django: 
+A Django REST API demonstrating MongoDB's Queryable Encryption using `django-mongodb-backend`.
 
-- Find your Django version. To do so from the command line, make sure you
-  have Django installed and run:
+## Tech Stack
 
-```bash
-django-admin --version
->> 6.0
-```
+- Python 3.12 / Django 6.x
+- MongoDB 8.0 
+- Django REST Framework
+- drf-spectacular (Swagger)
 
-## Create the Django project
-
-From your shell, run the following command to create a new Django project
-replacing the `{{ project_name }}` and `{{ version }}` sections. 
+## Setup
 
 ```bash
-django-admin startproject {{ project_name }} --template https://github.com/mongodb-labs/django-mongodb-project/archive/refs/heads/{{ version }}.x.zip
+git clone
+cd querysafe
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python manage.py migrate --database encrypted
+python manage.py seed_data --target encrypted
+python manage.py runserver
 ```
 
-For a project named `example` that runs on `django==6.0.*`
-the command would look like this:
+Visit `http://127.0.0.1:8000/api/docs/`
+
+## API
+
+| Method | URL | Description |
+|--------|-----|-------------|
+| GET | `/api/assessments/` | List all assessments |
+| POST | `/api/assessments/` | Create an assessment |
+
+## Encryption
+
+| Encrypted 🔒 | Plain (queryable) |
+|---------------|-------------------|
+| Titles, descriptions | Likelihood, impact |
+| Names, emails, roles | Score, dates |
+
+Data is encrypted at rest in MongoDB. 
+Django auto-decrypts on read.
+
+## Tests
 
 ```bash
-django-admin startproject example --template https://github.com/mongodb-labs/django-mongodb-project/archive/refs/heads/6.0.x.zip
+python manage.py test riskapp
 ```
+
+## References
+- [Queryable Encryption](https://www.mongodb.com/docs/languages/python/django-mongodb/current/queryable-encryption/)
