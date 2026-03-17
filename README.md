@@ -33,7 +33,7 @@ Visit `http://127.0.0.1:8000/api/docs/`
 
 ## Encryption
 
-| Encrypted 🔒 | Plain (queryable) |
+| Encrypted | Plain (queryable) |
 |---------------|-------------------|
 | Titles, descriptions | Likelihood, impact |
 | Names, emails, roles | Score, dates |
